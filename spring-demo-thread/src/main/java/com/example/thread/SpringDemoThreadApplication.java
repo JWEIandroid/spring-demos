@@ -2,12 +2,19 @@ package com.example.thread;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SpringDemoThreadApplication {
+public class SpringDemoThreadApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDemoThreadApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringDemoThreadApplication.class);
     }
 
 }

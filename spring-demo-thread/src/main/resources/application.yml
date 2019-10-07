@@ -1,1 +1,63 @@
 
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600s
+
+spring:
+  application:
+    name: sms-web
+  # 404 交给异常处理器处理
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60m
+  session:
+    store-type: redis
+    redis:
+      namespace: sms:session
+    timeout: 1d
+    # 用户令牌放到header的名称
+    header-name: Authorization
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1/carmarket?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    #dataSource Pool configuration
+    dbcp2:
+      initial-size: 5
+      min-idle: 5
+      max-idle: 20
+      max-wait-millis: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+    druid:
+      filter:
+        stat:
+          log-slow-sql: false
+          slow-sql-millis: 500
+
+
+mybatis:
+  type-aliases-package: com.jch.market.entity
+  mapper-locations: classpath:mappers/*.xml
+  type-handlers-package: com.jch.market.handler
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: false
+  params: count=countSql
+  offset-as-page-num: true
+

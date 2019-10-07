@@ -108,10 +108,11 @@ subprojects { subproj ->
 project(":spring-demo-thread") {
     dependencies {
         compile(
-//                libraries.'mysql',
+                libraries.'mysql',
 //                libraries.'page-helper',
 //                libraries.'lombok',
                 libraries.'dom4j',
+                libraries.'redis',
 //                libraries.'bouncycastle',
 //                libraries.'poi',
 //                libraries.'redis',

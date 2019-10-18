@@ -113,6 +113,7 @@ project(":spring-demo-thread") {
 //                libraries.'lombok',
                 libraries.'dom4j',
                 libraries.'redis',
+                libraries.'openfeign',
 //                libraries.'bouncycastle',
 //                libraries.'poi',
 //                libraries.'redis',
